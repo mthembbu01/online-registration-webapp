@@ -1,1 +1,1 @@
-# SkolaAngular
+# Online Registration Webapp
