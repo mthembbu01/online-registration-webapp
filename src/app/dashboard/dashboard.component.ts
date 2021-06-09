@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import {Injectable, EventEmitter, Output, Component, OnInit} from '@angular/core';
 import {Person} from '../shared/person.model';
 import {RegisterService} from '../register/register.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -11,22 +12,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  private persons:Person[] = [];
+  public personList:Person[] = [];
 
   constructor(
     private registerService: RegisterService,
     private router:Router,
     private activateRoute:ActivatedRoute
     ) {
-     }
+
+    }
 
   ngOnInit(): void {
     console.log('On dashboard');
-  this.registerService.getPersons()
-    .subscribe(
-    (person) => console.log(person)
-    )   ;
-  console.log('Person List: ',this.persons);
+  this.registerService.getPersons().subscribe((list)=> {this.personList = list as Person []; console.log('Subscribe List: ',this.personList);});
+
   }
 
 }

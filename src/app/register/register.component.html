@@ -19,32 +19,57 @@
 
               <div class="card-body">
                   <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label for="firstName">First Name</label>
-                      <input type="text" class="form-control" ngModel name="first_name" id="firstName" placeholder="First Name">
+                    <div class="form-group col-sm-6" [class.has-error]="fNameControl.invalid">
+                      <label for="firstName" class="control-label">First Name</label>
+                      <input type="text" class="form-control" ngModel
+                             name="firstName" id="firstName"
+                             placeholder="First Name" required
+                             minlength="4" maxlength="25" #fNameControl="ngModel"
+                      >
+<!--                        <span class="help-block" *ngIf="fNameControl.invalid">-->
+<!--                                Full name is required</span>-->
+                            <div *ngIf="fNameControl.invalid && (fNameControl.dirty || fNameControl.touched)"
+                                 class="alert">
+
+                            <div *ngIf="fNameControl.errors?.required">
+                                <div style="color:#dc3545;">* Name is required. </div>
+                            </div>
+                            <div *ngIf="fNameControl.errors?.minlength">
+                                <div style="color:#dc3545;"> Name must be at least 4 characters long. </div>
+                            </div>
+                            <div *ngIf="fNameControl.errors?.maxlength">>
+                                <div style="color:#dc3545;"> Name must be at least 4 characters long. </div>
+                            </div>
+                    </div>
+<!--                        <div>touched: {{registerForm.touched}}</div>-->
+<!--                        <div>untouched: {{registerForm.untouched}}</div>-->
                     </div>
 
                     <div class="form-group col-sm-6">
                       <label for="lastName">Last Name</label>
-                      <input type="text" class="form-control" ngModel name="last_name" id="lastName" placeholder="Last Name">
+                      <input type="text" class="form-control" ngModel name="lastName" id="lastName" placeholder="Last Name">
                     </div>
                   </div>
                   <div class="row">
                    <div class="form-group col-sm-6">
                       <label for="id_number">ID Number</label>
-                      <input type="text" class="form-control" ngModel name="id_number" id="id_number" placeholder="ID Number">
+                      <input type="text" class="form-control" ngModel name="idNumber" id="id_number" placeholder="ID Number">
                     </div>
 
                     <div class="form-group col-sm-6">
                       <label for="contact_number">Cell Phone</label>
-                      <input type="text" class="form-control" ngModel name="contact_number" id="contact_number" placeholder="Cell Phone">
+                      <input type="text" class="form-control" ngModel name="contactNumber" id="contact_number" placeholder="Cell Phone">
                     </div>
                   </div>
               
               </div>
          </div>
           <div class="register-btn">
-          <input type="submit" [routerLink]="['/dashboard']" routerLinkActive="active" class="fadeIn fourth" [disabled]="registerForm.invalid" value="Register" (click)="onSelect('register')">
+          <input type="submit" [routerLink]="['/dashboard']"
+                 routerLinkActive="active" class="fadeIn fourth"
+                 [disabled]="registerForm.invalid" value="Register"
+                 (click)="onSelect('register')"
+          >
           </div>
         </form>
       </div>
