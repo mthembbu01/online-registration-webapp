@@ -14,8 +14,8 @@ export class DashboardService {
 
   constructor(private http: HttpClient) {}
 
-  public getPersons(): Person[]{
-    return this.http.get<any>(`${this.apiServerUrl2}/v1/api/person/all`);
-  }
+  public getPersons(): Observable<Person[]>{
+      return this.http.get<any>(`${this.apiServerUrl2}/v1/api/persons`);
+    }
 
 }

@@ -10,6 +10,7 @@ import {HeaderComponent} from './header/header.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RegisterService} from './register/register.service';
+import {DashboardService} from './dashboard/dashboard.service';
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -28,7 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
     ],
-  providers: [RegisterService],
+  providers: [RegisterService,DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

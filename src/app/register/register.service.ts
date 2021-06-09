@@ -19,15 +19,15 @@ export class RegisterService {
   }
 
   public addPerson(person: Person): Observable<Person>{
-    return this.http.post<Person>(`${this.apiServerUrl2}/v1/api/person`,person);
+    return this.http.post<Person>(`${this.apiServerUrl2}/v1/api/persons`,person);
   }
 
   public getPersons(): Observable<Person[]>{
-    return this.http.get<any>(`${this.apiServerUrl2}/v1/api/person/all`);
+    return this.http.get<any>(`${this.apiServerUrl2}/v1/api/persons`);
   }
 
   public getPerson(id:Number): Observable<Person>{
-    return this.http.get<Person>(`${this.apiServerUrl2}/v1/api/person/${id}`);
+    return this.http.get<Person>(`${this.apiServerUrl2}/v1/api/persons/${id}`);
   }
 
   public getUsers(): Observable<User[]> {
