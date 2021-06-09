@@ -9,7 +9,7 @@ import {HeaderComponent} from './header/header.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RegisterService} from './register/register.service';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
