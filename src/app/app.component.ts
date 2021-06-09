@@ -6,8 +6,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  name = 'skola-app';
-  selectedDisplay = 'login';
+  name = 'stokvel-app';
+  selectedDisplay = 'dashboard';
 
   onNavigate(selected: string): void {
     this.selectedDisplay = selected;

@@ -6,17 +6,12 @@
         <img src="assets/img/logo2.jpg" id="icon" alt="User Icon" style="max-height: 150px;max-width: 150px">
       </div>
 
-      <h2><i class="fa fa-lock fa-2x"></i> Sign-Up</h2>
+      <h2> Register Person</h2>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <form #registerForm="ngForm"  (ngSubmit)="onAddUser(registerForm)">
-          <div>
-            <div class="card-header">User Type</div>
-            <div class="card-body"></div>
-          </div>
-
+        <form #registerForm="ngForm"  (ngSubmit)="onAddPerson(registerForm)">
           <br>
 
           <div class="card">
@@ -25,47 +20,86 @@
               <div class="card-body">
                   <div class="row">
                     <div class="form-group col-sm-6">
-                      <label for="first_name">First Name</label>
-                      <input type="text" class="form-control" ngModel name="firstName" id="first_name" placeholder="First Name">
+                      <label for="firstName" class="control-label">First Name</label>
+                      <input type="text" class="form-control" ngModel
+                             name="firstName" id="firstName"
+                             placeholder="First Name" required
+                             minlength="4" maxlength="25" #firstNameControl="ngModel"
+                      >
+                        <div *ngIf="firstNameControl.invalid && (firstNameControl.dirty || firstNameControl.touched)">
+                            <div *ngIf="firstNameControl.errors?.required">
+                                <div style="color:#dc3545;">* Name is required. </div>
+                            </div>
+                            <div  *ngIf="firstNameControl.errors?.minlength" >
+                                <div style="color:#dc3545;"> Name must be at least 4 characters long. </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="form-group col-sm-6">
-                      <label for="lastName">Last Name</label>
-                      <input type="text" class="form-control" ngModel name="lastName" id="lastName" placeholder="Last Name">
+                      <label for="lastName" class="control-label">Last Name</label>
+                      <input type="text" class="form-control" ngModel
+                             name="lastName" id="lastName"
+                             placeholder="Last Name" required
+                             minlength="4" maxlength="20" #lastNameControl="ngModel"
+                      >
+                        <div *ngIf="lastNameControl.invalid && (lastNameControl.dirty || lastNameControl.touched)">
+                            <div *ngIf="lastNameControl.errors?.required">
+                                <div style="color:#dc3545;">* Last Name is required. </div>
+                            </div>
+                            <div  *ngIf="lastNameControl.errors?.minlength" >
+                                <div style="color:#dc3545;"> Last Name must be at least 2 characters or more. </div>
+                            </div>
+                        </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label for="email_address">Email Address</label>
-                      <input type="text" class="form-control" ngModel name="email" id="email_address" placeholder="Email Address">
+                   <div class="form-group col-sm-6">
+                      <label for="idnumber" class="control-label">ID Number</label>
+                      <input type="text" class="form-control" ngModel
+                             name="idNumber" id="idnumber"
+                             placeholder="ID Number" required
+                             minlength="0" maxlength="13" #idNumberControl="ngModel"
+                      >
+                       <div *ngIf="idNumberControl.invalid && (idNumberControl.dirty || idNumberControl.touched)">
+                           <div *ngIf="idNumberControl.errors?.required">
+                               <div style="color:#dc3545;">* ID number is required. </div>
+                           </div>
+                           <div  *ngIf="idNumberControl.errors?.minlength" >
+                               <div style="color:#dc3545;">  ID number is 13 digits.</div>
+                           </div>
+                       </div>
                     </div>
 
                     <div class="form-group col-sm-6">
-                      <label for="cell_phone">Cell Phone</label>
-                      <input type="text" class="form-control" ngModel name="cellPhone" id="cell_phone" placeholder="Cell Phone">
+                      <label for="contactnumber" class="control-label">Cell Phone</label>
+                      <input type="text" class="form-control" ngModel
+                             name="contactNumber" id="contactnumber"
+                             placeholder="Cell Phone" required
+                             maxlength="10" #contactNumberControl="ngModel"
+                      >
+                        <div *ngIf="contactNumberControl.invalid && (contactNumberControl.dirty || contactNumberControl.touched)">
+                            <div *ngIf="contactNumberControl.errors?.required">
+                                <div style="color:#dc3545;">*Contact number is required. </div>
+                            </div>
+                            <div  *ngIf="contactNumberControl.errors?.minlength" >
+                                <div style="color:#dc3545;">  ID number is 13 digits.</div>
+                            </div>
+                        </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label>Enter Password</label>
-                      <input type="password" class="form-control" ngModel name="password" id="password" placeholder="Password">
-                    </div>
-
-                    <div class="form-group col-sm-6">
-                      <label for="password_re_enter">Re-enter Password</label>
-                      <input type="password" class="form-control" ngModel name="passwordReEnter" id="password_re_enter" placeholder="Re-enter Password">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label for="cell_phone">ID Number</label>
-                      <input type="text" class="form-control" ngModel name="idNumber" id="id_number" placeholder="ID Number">
-                    </div>
-                  </div>
+              
               </div>
          </div>
-          <input type="submit" class="fadeIn fourth" [disabled]="registerForm.invalid" value="Log In" (click)="onSelect('loggedIn')">
-          <!--<button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Submit</button>-->
+          <div class="register-btn">
+
+          <input type="submit" [routerLink]="['/dashboard']"
+                 routerLinkActive="active" class="fadeIn fourth"
+                     [disabled]="registerForm.invalid" value="Register"
+                 (click)="onSelect('register')"
+          >
+          </div>
         </form>
       </div>
     </div>

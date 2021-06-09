@@ -3,5 +3,6 @@
   <app-login  *ngIf="selectedDisplay === 'login'" (selectedOption)="onNavigate($event)"></app-login>
   <app-password-reset *ngIf="selectedDisplay === 'passwordReset'" (selectedOptionRest)="onNavigate($event)"></app-password-reset>
   <app-register *ngIf="selectedDisplay === 'register'" (registeredEvt)="onNavigate($event)"></app-register>
-  <app-dashboard *ngIf="selectedDisplay === 'loggedIn'"></app-dashboard>
+  <app-dashboard *ngIf="selectedDisplay === 'dashboard'" (registeredEvt)="onNavigate($event)"></app-dashboard>
 </div>
+
