@@ -19,46 +19,74 @@
 
               <div class="card-body">
                   <div class="row">
-                    <div class="form-group col-sm-6" [class.has-error]="fNameControl.invalid">
+                    <div class="form-group col-sm-6">
                       <label for="firstName" class="control-label">First Name</label>
                       <input type="text" class="form-control" ngModel
                              name="firstName" id="firstName"
                              placeholder="First Name" required
-                             minlength="4" maxlength="25" #fNameControl="ngModel"
+                             minlength="4" maxlength="25" #firstNameControl="ngModel"
                       >
-<!--                        <span class="help-block" *ngIf="fNameControl.invalid">-->
-<!--                                Full name is required</span>-->
-                            <div *ngIf="fNameControl.invalid && (fNameControl.dirty || fNameControl.touched)"
-                                 class="alert">
-
-                            <div *ngIf="fNameControl.errors?.required">
+                        <div *ngIf="firstNameControl.invalid && (firstNameControl.dirty || firstNameControl.touched)">
+                            <div *ngIf="firstNameControl.errors?.required">
                                 <div style="color:#dc3545;">* Name is required. </div>
                             </div>
-                            <div *ngIf="fNameControl.errors?.minlength">
+                            <div  *ngIf="firstNameControl.errors?.minlength" >
                                 <div style="color:#dc3545;"> Name must be at least 4 characters long. </div>
                             </div>
-                            <div *ngIf="fNameControl.errors?.maxlength">>
-                                <div style="color:#dc3545;"> Name must be at least 4 characters long. </div>
-                            </div>
-                    </div>
-<!--                        <div>touched: {{registerForm.touched}}</div>-->
-<!--                        <div>untouched: {{registerForm.untouched}}</div>-->
+                        </div>
+
                     </div>
 
                     <div class="form-group col-sm-6">
-                      <label for="lastName">Last Name</label>
-                      <input type="text" class="form-control" ngModel name="lastName" id="lastName" placeholder="Last Name">
+                      <label for="lastName" class="control-label">Last Name</label>
+                      <input type="text" class="form-control" ngModel
+                             name="lastName" id="lastName"
+                             placeholder="Last Name" required
+                             minlength="4" maxlength="20" #lastNameControl="ngModel"
+                      >
+                        <div *ngIf="lastNameControl.invalid && (lastNameControl.dirty || lastNameControl.touched)">
+                            <div *ngIf="lastNameControl.errors?.required">
+                                <div style="color:#dc3545;">* Last Name is required. </div>
+                            </div>
+                            <div  *ngIf="lastNameControl.errors?.minlength" >
+                                <div style="color:#dc3545;"> Last Name must be at least 2 characters or more. </div>
+                            </div>
+                        </div>
                     </div>
                   </div>
                   <div class="row">
                    <div class="form-group col-sm-6">
-                      <label for="id_number">ID Number</label>
-                      <input type="text" class="form-control" ngModel name="idNumber" id="id_number" placeholder="ID Number">
+                      <label for="idnumber" class="control-label">ID Number</label>
+                      <input type="text" class="form-control" ngModel
+                             name="idNumber" id="idnumber"
+                             placeholder="ID Number" required
+                             minlength="0" maxlength="13" #idNumberControl="ngModel"
+                      >
+                       <div *ngIf="idNumberControl.invalid && (idNumberControl.dirty || idNumberControl.touched)">
+                           <div *ngIf="idNumberControl.errors?.required">
+                               <div style="color:#dc3545;">* ID number is required. </div>
+                           </div>
+                           <div  *ngIf="idNumberControl.errors?.minlength" >
+                               <div style="color:#dc3545;">  ID number is 13 digits.</div>
+                           </div>
+                       </div>
                     </div>
 
                     <div class="form-group col-sm-6">
-                      <label for="contact_number">Cell Phone</label>
-                      <input type="text" class="form-control" ngModel name="contactNumber" id="contact_number" placeholder="Cell Phone">
+                      <label for="contactnumber" class="control-label">Cell Phone</label>
+                      <input type="text" class="form-control" ngModel
+                             name="contactNumber" id="contactnumber"
+                             placeholder="Cell Phone" required
+                             maxlength="10" #contactNumberControl="ngModel"
+                      >
+                        <div *ngIf="contactNumberControl.invalid && (contactNumberControl.dirty || contactNumberControl.touched)">
+                            <div *ngIf="contactNumberControl.errors?.required">
+                                <div style="color:#dc3545;">*Contact number is required. </div>
+                            </div>
+                            <div  *ngIf="contactNumberControl.errors?.minlength" >
+                                <div style="color:#dc3545;">  ID number is 13 digits.</div>
+                            </div>
+                        </div>
                     </div>
                   </div>
               
@@ -67,7 +95,7 @@
           <div class="register-btn">
           <input type="submit" [routerLink]="['/dashboard']"
                  routerLinkActive="active" class="fadeIn fourth"
-                 [disabled]="registerForm.invalid" value="Register"
+                     [disabled]="registerForm.invalid" value="Register"
                  (click)="onSelect('register')"
           >
           </div>

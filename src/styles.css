@@ -259,6 +259,10 @@ input[type='text']::placeholder, input[type='password']::placeholder {
 .invalid-feedback {
  color:#dc3545;
 }
+
+label {
+ font-size: large;
+}
 /* OTHERS */
 
 *:focus {
