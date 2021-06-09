@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit{
   name = 'stokvel-app';
-  selectedDisplay = 'register';
+  selectedDisplay = 'dashboard';
 
   onNavigate(selected: string): void {
     this.selectedDisplay = selected;
