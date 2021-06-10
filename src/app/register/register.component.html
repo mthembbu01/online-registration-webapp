@@ -3,23 +3,16 @@
     <!--Icon -->
     <div class="text-center">
       <div class="fadeIn first">
-        <img src="assets/img/logo2.jpg" id="icon" alt="User Icon" style="max-height: 150px;max-width: 150px">
+        <img src="assets/img/logo_trans.png" id="icon" alt="User Icon" style="max-height: 150px;max-width: 150px">
       </div>
-
       <h2><i class="fa fa-lock fa-2x"></i> Sign-Up</h2>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
         <form #registerForm="ngForm"  (ngSubmit)="onAddUser(registerForm)">
-          <div>
-            <div class="card-header">User Type</div>
-            <div class="card-body"></div>
-          </div>
-
-          <br>
-
           <div class="card">
+              <p>{{err}}</p>
               <div class="card-header bg-light">Personal Details</div>
 
               <div class="card-body">
@@ -36,35 +29,18 @@
                   </div>
                   <div class="row">
                     <div class="form-group col-sm-6">
-                      <label for="email_address">Email Address</label>
-                      <input type="text" class="form-control" ngModel name="email" id="email_address" placeholder="Email Address">
+                      <label for="idNumber">ID Number</label>
+                      <input type="text" class="form-control" ngModel name="idNumber" id="idNumber" placeholder="ID Number">
                     </div>
 
                     <div class="form-group col-sm-6">
-                      <label for="cell_phone">Cell Phone</label>
-                      <input type="text" class="form-control" ngModel name="cellPhone" id="cell_phone" placeholder="Cell Phone">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label>Enter Password</label>
-                      <input type="password" class="form-control" ngModel name="password" id="password" placeholder="Password">
-                    </div>
-
-                    <div class="form-group col-sm-6">
-                      <label for="password_re_enter">Re-enter Password</label>
-                      <input type="password" class="form-control" ngModel name="passwordReEnter" id="password_re_enter" placeholder="Re-enter Password">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-sm-6">
-                      <label for="cell_phone">ID Number</label>
-                      <input type="text" class="form-control" ngModel name="idNumber" id="id_number" placeholder="ID Number">
+                      <label for="contactNumber">Cell Phone</label>
+                      <input type="text" class="form-control" ngModel name="contactNumber" id="contactNumber" placeholder="Cell Phone">
                     </div>
                   </div>
               </div>
          </div>
-          <input type="submit" class="fadeIn fourth" [disabled]="registerForm.invalid" value="Log In" (click)="onSelect('loggedIn')">
+          <input type="submit" class="fadeIn fourth" [disabled]="registerForm.invalid" value="Register">
         </form>
       </div>
     </div>

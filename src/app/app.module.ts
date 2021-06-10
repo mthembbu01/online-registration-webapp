@@ -9,7 +9,13 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterService } from './register/register.service';
 import { HttpClientModule } from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
 
+const appRoutes: Routes = [
+    {path: '', component: DashboardComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'dashboard', component: DashboardComponent}
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes)
     ],
   providers: [RegisterService],
   bootstrap: [AppComponent]

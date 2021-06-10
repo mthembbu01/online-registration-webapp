@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Person} from '../shared/person.model';
+import {RegisterService} from '../register/register.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  registeredPersons: Person[] = [];
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit(): void {
+      this.registerService.getUsers().subscribe(
+          persons => this.registeredPersons = persons
+      );
   }
-
 }
