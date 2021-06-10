@@ -5,10 +5,9 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {HeaderComponent} from './header/header.component';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {RegisterService} from './register/register.service';
+import { RegisterService } from './register/register.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -18,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    PasswordResetComponent,
     DashboardComponent,
   ],
     imports: [
